@@ -4,6 +4,7 @@ firebase.json
 firestore.rules
 .firebaserc
 vite.config.ts.timestamp-*
+hosting.*.cache
 
 # Logs
 logs
