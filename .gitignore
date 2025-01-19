@@ -1,6 +1,5 @@
 # Project files
 .env*
-firebase.json
 firestore.rules
 .firebaserc
 vite.config.ts.timestamp-*
