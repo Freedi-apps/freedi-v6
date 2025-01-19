@@ -1,7 +1,7 @@
 {
 	"name": "freedi-v6",
 	"private": true,
-	"version": "6.0.0",
+	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
 		"clean": "rm -rf node_modules package-lock.json dist && git rm -r --cache . && git reset && npm install && npm run build",
