@@ -9,7 +9,8 @@
 		"build": "tsc -b && vite build",
 		"check-all": "npm run lint && npm run typecheck && npm run build",
 		"lint": "eslint .",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"dev:e": "firebase emulators:start"
 	},
 	"dependencies": {
 		"@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
