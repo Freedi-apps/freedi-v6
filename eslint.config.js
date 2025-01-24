@@ -2,13 +2,13 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import * as tseslint from 'typescript-eslint'
 import react from 'eslint-plugin-react'
 import prettier from 'eslint-plugin-prettier'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import importPlugin from 'eslint-plugin-import'
 
-export default tseslint.config(
+export default [
   { ignores: ['dist'] },
   {
     files: ['**/*.{ts,tsx}'],
@@ -19,8 +19,9 @@ export default tseslint.config(
         ...globals.es6,
         ...globals.node
       },
+      parser: tseslint.parser,
       parserOptions: {
-        project: './tsconfig.json'
+        projectService: true
       }
     },
     plugins: {
@@ -41,18 +42,13 @@ export default tseslint.config(
       },
       'import/resolver': {
         typescript: {
-          alwaysTryTypes: true,
-          project: ['./tsconfig.json']
+          alwaysTryTypes: true
         }
       }
     },
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      'plugin:prettier/recommended',
-      'plugin:jsx-a11y/recommended'
-    ],
     rules: {
+      ...js.configs.recommended.rules,
+      ...tseslint.plugin.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
@@ -68,15 +64,6 @@ export default tseslint.config(
       'no-duplicate-case': 'error',
       'newline-before-return': 'error',
       'import/newline-after-import': ['error', { count: 1 }],
-      '@typescript-eslint/ban-types': [
-        'error',
-        {
-          extendDefaults: true,
-          types: {
-            '{}': false
-          }
-        }
-      ],
       'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
       'indent': ['error', 'tab'],
       'no-multiple-empty-lines': [
@@ -85,4 +72,4 @@ export default tseslint.config(
       ]
     }
   }
-)
+]

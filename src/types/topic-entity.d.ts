@@ -9,8 +9,7 @@ export type Topic = {
 	creator: User;
 }
 
-
-export enum Topic {
+export enum TopicType {
 	None,
 	Sign,
 	MassConsensus,
